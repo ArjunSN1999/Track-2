@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonDown("Cancel"))
         {
         pausescreen.SetActive(true);
+        Time.timeScale=0;
         }
     }
 
@@ -76,4 +78,18 @@ public class PlayerController : MonoBehaviour
         isgamelost=true;
         }  
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale=1;
+    }
+
+    public void PauseGame()
+    {
+        pausescreen.SetActive(false);
+        Time.timeScale=1;
+    }
+
+
 }
